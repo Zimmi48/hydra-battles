@@ -22,9 +22,9 @@ jobs:
           before_script: |
             startGroup "Install Alectryon"
               sudo apt-get update
-              sudo apt-get install python3-pip
-              sudo pip install alectryon
-              opam install coq-serapi
+              yes | sudo apt-get install python3-pip
+              yes | sudo pip install alectryon
+              yes | opam install coq-serapi
             endGroup
             startGroup "Create Makefile.coq and add permission"
               sudo chown -R coq:coq .
@@ -54,7 +54,7 @@ jobs:
           working_directory: doc
           latexmk_use_lualatex: true
           pre_compile:
-            sudo pip install alectryon
+            yes | sudo pip install alectryon
 
       - name: Extract PDF and Coq-Doc
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
