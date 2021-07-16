@@ -37,7 +37,7 @@ jobs:
               make -j "$(nproc)" html
             endGroup
             startGroup "Build Alectryon movies"
-              make -C movies -j "$(nproc)" all
+              make -C doc/movies -j "$(nproc)" all
             endGroup
           uninstall: |
             startGroup "Clean"
