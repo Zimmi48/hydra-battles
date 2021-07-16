@@ -26,7 +26,7 @@ jobs:
               sudo apt-get update
               yes | sudo apt-get install python3-pip
               yes | sudo pip3 install alectryon
-              yes | opam install coq-serapi
+              yes "Y" | opam install coq-serapi
             endGroup
             startGroup "Create Makefile.coq and add permission"
               sudo chown -R coq:coq .
