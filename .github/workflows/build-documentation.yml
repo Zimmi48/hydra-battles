@@ -28,6 +28,9 @@ jobs:
               yes | sudo pip3 install alectryon
               opam install coq-serapi -y
             endGroup
+            startGroup "Build Alectryon movies"
+              make -C doc/movies -j "$(nproc)" all
+            endGroup
             startGroup "Create Makefile.coq and add permission"
               sudo chown -R coq:coq .
               make Makefile.coq
@@ -35,9 +38,6 @@ jobs:
           script: |
             startGroup "Build coqdoc documentation"
               make -j "$(nproc)" html
-            endGroup
-            startGroup "Build Alectryon movies"
-              make -C doc/movies -j "$(nproc)" all
             endGroup
           uninstall: |
             startGroup "Clean"
